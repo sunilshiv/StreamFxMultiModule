@@ -50,7 +50,26 @@ android {
 
 dependencies {
 
-    // Core & Lifecycle
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":core:common"))
+    implementation(project(":core:network"))
+    implementation(project(":core:database"))
+    implementation(project(":core:datastore"))
+    implementation(project(":core:webrtc"))
+
+    // Hilt
+    implementation(Deps.hiltAndroid)
+    ksp(Deps.hiltCompiler)
+
+    // Compose
+    implementation(platform(Deps.composeBom))
+    implementation(Deps.composeUi)
+    implementation(Deps.composeMaterial3)
+    implementation(Deps.composeNavigation)
+    debugImplementation(Deps.composeTooling)
+
+   /* // Core & Lifecycle
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -83,7 +102,7 @@ dependencies {
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.media3.exoplayer.dash)
-    implementation(libs.androidx.media3.exoplayer.hls)
+    implementation(libs.androidx.media3.exoplayer.hls)*/
 
     // Testing
     testImplementation(libs.junit)

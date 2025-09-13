@@ -17,6 +17,9 @@ navigationCompose = "2.7.7"
 okhttp = "4.11.0"
 retrofit = "2.9.0"
 room = "2.6.1"
+jetbrainsKotlinJvm = "1.9.22"
+appcompatVersion = "1.7.1"
+material = "1.13.0"
 # The 'kapt' version is removed to avoid redundancy and potential conflicts.
 
 [libraries]
@@ -47,6 +50,8 @@ ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 material3 = { module = "androidx.compose.material3:material3" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompatVersion" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -54,3 +59,5 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 # Ensure the kapt plugin uses the main 'kotlin' version reference
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 ksp-android = {id = "com.google.devtools.ksp", version.ref = "ksp"}
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
