@@ -7,7 +7,8 @@ object Versions {
     const val room = "2.6.1"
     const val datastore = "1.1.1"
     const val work = "2.9.0"
-    const val webrtc = "1.0.32006"
+    /*const val webrtc = "1.0.32006"*/
+    const val webrtc = "137.7151.03" //https://github.com/webrtc-sdk/android
     const val composeBom = "2025.01.00"
     const val navigation = "2.8.0"
 }
@@ -40,7 +41,8 @@ object Deps {
     const val work = "androidx.work:work-runtime-ktx:${Versions.work}"
 
     // WebRTC
-    const val webrtc = "org.webrtc:google-webrtc:${Versions.webrtc}"
+   /* const val webrtc = "org.webrtc:google-webrtc:${Versions.webrtc}"*/
+    const val webrtc = "io.github.webrtc-sdk:android:${Versions.webrtc}"
 
     // Compose
     const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
