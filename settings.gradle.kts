@@ -21,3 +21,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "StreamFxMultiModule"
 include(":app")
+include(":core:network")
+include(":core:database")
+include(":core:common")
+include(":core:datastore")
+include(":core:webrtc")
+include(":domain")
+include(":data")
