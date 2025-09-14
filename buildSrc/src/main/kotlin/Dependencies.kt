@@ -11,6 +11,11 @@ object Versions {
     const val webrtc = "137.7151.03" //https://github.com/webrtc-sdk/android
     const val composeBom = "2025.01.00"
     const val navigation = "2.8.0"
+
+    //test versions
+    const val junit = "4.13.2"
+    const val junitVersion = "1.1.5"
+    const val espressoCore = "3.5.1"
 }
 
 object Deps {
@@ -45,9 +50,16 @@ object Deps {
     const val webrtc = "io.github.webrtc-sdk:android:${Versions.webrtc}"
 
     // Compose
-    const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
+    const val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}" //
     const val composeUi = "androidx.compose.ui:ui"
     const val composeMaterial3 = "androidx.compose.material3:material3"
     const val composeTooling = "androidx.compose.ui:ui-tooling"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navigation}"
+
+    //Testing
+    const val junit = "junit:junit:${Versions.junit}"
+    const val androidxJunit = "androidx.test.ext:junit:${Versions.junitVersion}"
+    const val androidxEspressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val uiTestJunit4 = "androidx.compose.ui:ui-test-junit4"
+    const val uiTestManifest = "androidx.compose.ui:ui-test-manifest"
 }

@@ -18,4 +18,14 @@ dependencies {
     ksp(Deps.roomCompiler)
 
     implementation(Deps.coroutinesCore)
+
+    implementation(platform(Deps.composeBom))
+
+    // Testing
+    testImplementation(Deps.junit)
+    androidTestImplementation(Deps.androidxJunit)
+    androidTestImplementation(Deps.androidxEspressoCore)
+    androidTestImplementation(platform(Deps.composeBom))
+    androidTestImplementation(Deps.uiTestJunit4)
+    debugImplementation(Deps.uiTestManifest)
 }
