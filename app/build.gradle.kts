@@ -105,11 +105,10 @@ dependencies {
     implementation(libs.androidx.media3.exoplayer.hls)*/
 
     // Testing
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
+    testImplementation(Deps.junit)
+    androidTestImplementation(Deps.androidxJunit)
+    androidTestImplementation(Deps.androidxEspressoCore)
+    androidTestImplementation(platform(Deps.composeBom))
+    androidTestImplementation(Deps.uiTestJunit4)
+    debugImplementation(Deps.uiTestManifest)
 }
