@@ -1,8 +1,13 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
+    kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.compose")
+
 }
 
 android {
@@ -10,11 +15,21 @@ android {
     compileSdk = 35
     defaultConfig { minSdk = 24 }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21) // Replace X with your desired JVM version (e.g., JVM_11, JVM_17)
+        }
+    }
+
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
+        kotlinCompilerExtensionVersion = Versions.composeCompiler
     }
 }
 
@@ -23,16 +38,24 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":core:common"))
 
-    // Hilt
-    implementation(Deps.hiltAndroid)
-    ksp(Deps.hiltCompiler)
-
     // Compose
     implementation(platform(Deps.composeBom))
     implementation(Deps.composeUi)
     implementation(Deps.composeMaterial3)
     implementation(Deps.composeNavigation)
     debugImplementation(Deps.composeTooling)
+
+    // Hilt
+    implementation(Deps.hiltAndroid)
+    kapt(Deps.hiltCompiler)
+
+    // Coroutines
+    implementation(Deps.coroutinesCore)
+    implementation(Deps.coroutinesAndroid)
+
+    // Lifecycle
+    implementation(Deps.lifecycleViewModel)
+    implementation(Deps.lifecycleRuntime)
 
     // Testing
     testImplementation(Deps.junit)
