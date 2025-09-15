@@ -1,15 +1,45 @@
 object Versions {
-    const val kotlin = "2.0.0"
-    const val coroutines = "1.8.1"
-    const val hilt = "2.51.1"
+
+    //agp
+    const val agp = "8.7.2"
+
+    //compose
+    const val compose = "2.0.20"
+
+    // Core
+    const val kotlin = "2.2.10"
+    const val gradle = "8.7.2"
+
+    // Compose
+    const val composeBom = "2024.09.01"
+    const val composeCompiler = "1.7.0"
+
+    // Hilt
+    const val hilt = "2.56.2"
+
+    // KSP
+    const val ksp = "2.1.20-1.0.27"
+
+    // Coroutines
+    const val coroutines = "1.9.0"
+
+    // AndroidX
+    const val lifecycle = "2.8.4"
+    const val activityCompose = "1.9.2"
+
+   // network
     const val retrofit = "2.11.0"
     const val okhttp = "4.12.0"
+
+    // Persistence
     const val room = "2.6.1"
     const val datastore = "1.1.1"
+
+    // Background
     const val work = "2.9.0"
+
     /*const val webrtc = "1.0.32006"*/
     const val webrtc = "137.7151.03" //https://github.com/webrtc-sdk/android
-    const val composeBom = "2025.01.00"
     const val navigation = "2.8.0"
 
     //test versions
@@ -19,6 +49,22 @@ object Versions {
 }
 
 object Deps {
+
+    //
+
+    // Compose
+    const val activityCompose =
+        "androidx.activity:activity-compose:${Versions.activityCompose}"
+
+    // KSP (for Room, DataStore, etc.)
+    const val ksp = "com.google.devtools.ksp:symbol-processing-api:${Versions.ksp}"
+
+    // Lifecycle
+    const val lifecycleViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val lifecycleRuntime =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+
     // Kotlin
     const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
@@ -55,6 +101,7 @@ object Deps {
     const val composeMaterial3 = "androidx.compose.material3:material3"
     const val composeTooling = "androidx.compose.ui:ui-tooling"
     const val composeNavigation = "androidx.navigation:navigation-compose:${Versions.navigation}"
+    const val composeCompiler = "org.jetbrains.kotlin.plugin.compose:${Versions.compose}"
 
     //Testing
     const val junit = "junit:junit:${Versions.junit}"
