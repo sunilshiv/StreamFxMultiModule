@@ -1,7 +1,12 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
     id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 
@@ -29,18 +34,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21) // Replace X with your desired JVM version (e.g., JVM_11, JVM_17)
+        }
+
+        buildFeatures {
+            compose = true
+        }
+        composeOptions {
+            kotlinCompilerExtensionVersion = Versions.composeCompiler
+        }
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8"
-    }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -50,6 +59,8 @@ android {
 
 dependencies {
 
+  /*  implementation(libs.symbol.processing.api)*/
+
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":core:common"))
@@ -58,16 +69,38 @@ dependencies {
     implementation(project(":core:datastore"))
     implementation(project(":core:webrtc"))
 
-    // Hilt
-    implementation(Deps.hiltAndroid)
-    ksp(Deps.hiltCompiler)
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":core:common"))
 
     // Compose
     implementation(platform(Deps.composeBom))
     implementation(Deps.composeUi)
     implementation(Deps.composeMaterial3)
     implementation(Deps.composeNavigation)
+    implementation(Deps.activityCompose)
     debugImplementation(Deps.composeTooling)
+
+    // Hilt
+    implementation(Deps.hiltAndroid)
+    kapt(Deps.hiltCompiler)
+
+    // Coroutines
+    implementation(Deps.coroutinesCore)
+    implementation(Deps.coroutinesAndroid)
+
+    // Lifecycle
+    implementation(Deps.lifecycleViewModel)
+    implementation(Deps.lifecycleRuntime)
+
+  /*  // Hilt
+    implementation("com.google.dagger:hilt-android:2.57.1")         // latest stable
+    ksp("com.google.dagger:hilt-android-compiler:2.57.1")           // match
+    ksp("androidx.hilt:hilt-compiler:1.3.0")*/
+    /* implementation(Deps.hiltAndroid)
+     ksp(Deps.hiltCompiler)*/
+
+
 
    /* // Core & Lifecycle
     implementation(libs.androidx.core.ktx)
